@@ -31,11 +31,14 @@ git clone https://github.com/Aurora-softwares/Australis.Dev-user-demo.git
 cd Australis.Dev-user-demo
 ```
 
-### 2. Prepare the executable
+### 2. Build the executable
 
-The repository currently contains documentation and a license; it does **not yet include application source code or a ready-made executable**.
+Compile the included project with a Hydrogen compiler that supports the
+Australis target:
 
-When the source and its Hydrogen project file are available, compile them using a Hydrogen compiler that supports the Australis target. See [Australis-HelloWorld](https://github.com/Aurora-softwares/Australis-HelloWorld) for a working example of the project and build workflow.
+```bash
+hy build UserDemo.hyproj -o user-demo.exec
+```
 
 ### 3. Add the executable to HyFS
 
@@ -95,9 +98,9 @@ For memory-isolation and error-recovery testing, see [Australis.Dev-user-fault](
 
 ## Current Limitations
 
-Australis OS and Hydrogen are under active development. The current HyFS boot image is read-only, and the available executable instructions and operating-system services are still evolving.
-
-This repository currently serves as a placeholder for the test application's own source and build instructions. The documented launch filename is illustrative rather than a verified build artifact.
+Australis OS and Hydrogen are under active development. Console input and text
+file results are currently limited to 255 ASCII bytes. The demo reads
+`/hello.txt`; that file must be present in the mounted filesystem.
 
 ## Related Projects
 

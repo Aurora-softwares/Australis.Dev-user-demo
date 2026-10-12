@@ -1,15 +1,14 @@
 public class Program {
-    public static void Main(string[] args) {
-        System.Australis.Terminal.Write("user> ");
-        System.Australis.Terminal.ReadLine(64);
-        System.Australis.Terminal.Write("input: ");
-        System.Australis.Terminal.WriteResult();
-        System.Australis.Terminal.WriteLine("");
+    public static int Main(string[] args) {
+        System.Console.Write("user> ");
+        string input = System.Console.ReadLine();
+        System.Console.Write("input: ");
+        System.Console.WriteLine(input);
 
-        System.Australis.Files.Open("/hello.txt");
-        System.Australis.Files.Read(1024);
-        System.Australis.Terminal.Write("file: ");
-        System.Australis.Terminal.WriteResult();
-        System.Australis.Files.Close();
+        if (!System.IO.File.Exists("/hello.txt")) { return 1; }
+        string contents = System.IO.File.ReadAllText("/hello.txt");
+        System.Console.Write("file: ");
+        System.Console.Write(contents);
+        return 0;
     }
 }
