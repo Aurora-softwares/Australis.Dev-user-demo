@@ -40,28 +40,32 @@ Australis target:
 hy build UserDemo.hyproj -o user-demo.exec
 ```
 
-### 3. Add the executable to HyFS
+### 3. Package the executable in HyFS 2
 
-For the current read-only HyFS boot image, place the compiled `.exec` file in the `rootfs` directory of the Australis OS build, together with the root-level test file it will read:
+The standard Australis OS aggregate builds this project and installs
+`user-demo.exec` under `/Bin` in the read-only HyFS 2 boot image. The image
+must also contain `/hello.txt`, which the source reads:
 
 ```text
-Australis-OS/
-└── rootfs/
-    ├── user_demo.exec
-    └── <test-file>
+/
+├── Bin/
+│   └── user-demo.exec
+└── hello.txt
 ```
 
-Rebuild the OS image so both files are packed into HyFS. The test filename and its contents must match what the demo implementation expects.
+The normal image build includes both files. Rebuild the OS image after changing
+the application; the source expects `/hello.txt`.
 
 ### 4. Run in Australis OS
 
 After booting the rebuilt image, invoke the program from the terminal:
 
 ```text
-run /user_demo.exec
+run /Bin/user-demo.exec
 ```
 
-The filename above is an example; use the actual name of the generated executable.
+The bare command `user-demo` also resolves through the current recovery
+shell's `PATH`.
 
 Once launched, follow its input prompt (if present) and inspect the reported file data. Exact prompts and output depend on the implementation.
 
