@@ -43,7 +43,7 @@ hy build UserDemo.hyproj -o user-demo.exec
 ### 3. Package the executable in HyFS 2
 
 The standard Australis OS aggregate builds this project and installs
-`user-demo.exec` under `/Bin` in the read-only HyFS 2 boot image. The image
+`user-demo.exec` under `/System/Bin` in the read-only HyFS 2 boot image. The image
 must also contain `/hello.txt`, which the source reads:
 
 ```text
@@ -61,7 +61,7 @@ the application; the source expects `/hello.txt`.
 After booting the rebuilt image, invoke the program from the terminal:
 
 ```text
-run /Bin/user-demo.exec
+run /System/Bin/user-demo.exec
 ```
 
 The bare command `user-demo` also resolves through the current recovery
